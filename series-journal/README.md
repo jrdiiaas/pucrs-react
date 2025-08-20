@@ -52,16 +52,16 @@ Nesta primeira fase, todas as funcionalidades de CRUD são estáticas, ou seja, 
 Abaixo estão as telas da aplicação implementada:
 
 **Página Inicial**
-![Página Inicial](https://i.imgur.com/G5gE50Y.png)
+![Página Inicial](./src/assets/inicio.png)
 
 **Página Sobre**
-![Página Sobre](https://i.imgur.com/vHq1hBw.png)
+![Página Sobre](./src/assets/sobre.png)
 
 **Página de Cadastro de Séries**
-![Formulário de Cadastro](https://i.imgur.com/X4J6wZ0.png)
+![Formulário de Cadastro](./src/assets/form.png)
 
 **Página de Listagem de Séries**
-![Lista de Séries](https://i.imgur.com/aC8Fw1Z.png)
+![Lista de Séries](./src/assets/lista.png)
 
 ## Decisões de Desenvolvimento
 
