@@ -1,6 +1,6 @@
-## Nome: Alexandre Sousa Dias Junior
+# Nome: Alexandre Sousa Dias Junior
 
-## Como Executar o Projeto
+## Como Executar o Projeto Series Journal - Fase 1
 
 Para executar o projeto localmente, siga os passos abaixo:
 
@@ -22,7 +22,7 @@ Para executar o projeto localmente, siga os passos abaixo:
     ```
     A aplicação estará disponível em `http://localhost:3000` no seu navegador.
 
-# Series Journal - Fase 1 - Introdução
+## Introdução
 
 Este projeto é a primeira fase do desenvolvimento de um sistema frontend para a disciplina de Desenvolvimento de Sistemas Frontend do Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas da PUCRS.
 
