@@ -1,0 +1,32 @@
+.list-container {
+    width: 90%;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.serie-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    padding: 10px 5px;
+}
+
+.serie-actions button {
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.delete-btn {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+}
+
+.add-new-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    cursor: pointer;
+}

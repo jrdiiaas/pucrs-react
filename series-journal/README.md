@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+## Nome: Alexandre Sousa Dias Junior
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Como Executar o Projeto
 
-## Available Scripts
+Para executar o projeto localmente, siga os passos abaixo:
 
-In the project directory, you can run:
+1.  **Entre pasta usando o terminal:**
+    ```bash
+    cd series-journal
+    ```
 
-### `npm start`
+2.  **Instalar as dependências:**
+    No diretório do projeto, execute o comando para instalar todos os pacotes necessários.
+    ```bash
+    npm install
+    ```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+3.  **Iniciar a aplicação:**
+    Após a instalação, inicie o servidor de desenvolvimento.
+    ```bash
+    npm start
+    ```
+    A aplicação estará disponível em `http://localhost:3000` no seu navegador.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+# Series Journal - Fase 1 - Introdução
 
-### `npm test`
+Este projeto é a primeira fase do desenvolvimento de um sistema frontend para a disciplina de Desenvolvimento de Sistemas Frontend do Curso Superior de Tecnologia em Análise e Desenvolvimento de Sistemas da PUCRS.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+O objetivo é implementar um CRUD (Create, Read, Update, Delete) estático para um repositório de séries assistidas (Series Journal) utilizando React.
 
-### `npm run build`
+## Descrição dos Componentes
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+O projeto foi estruturado utilizando uma arquitetura baseada em componentes para promover a reutilização e a organização do código.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+-   **`App.jsx`**: Componente principal que atua como o "container" da aplicação. Ele gerencia o estado da lista de séries e controla qual página é exibida para o usuário.
+-   **`NavBar.jsx`**: Componente de navegação. Exibe os links para as diferentes seções da aplicação (Página Inicial, Sobre, Cadastrar, Listar) e comunica a seleção do usuário ao componente `App`.
+-   **`SerieForm.jsx`**: Componente que contém o formulário para adição e edição de séries. É um componente controlado, gerenciando os dados de entrada através do seu estado interno e validando as informações antes de submetê-las.
+-   **`SerieList.jsx`**: Componente responsável por receber a lista de séries (via props) e renderizá-la para o usuário. Para cada item, exibe os dados da série e os botões de ação (Editar e Excluir).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Funcionalidades Implementadas
 
-### `npm run eject`
+Nesta primeira fase, todas as funcionalidades de CRUD são estáticas, ou seja, os dados são manipulados em memória através do estado do React e não são persistidos.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+-   **Listagem de Séries:** A tela principal exibe uma lista com todas as séries cadastradas.
+-   **Cadastro de Séries:** Um formulário permite adicionar uma nova série à lista.
+-   **Edição de Séries:** É possível selecionar uma série existente e editar suas informações no mesmo formulário de cadastro.
+-   **Exclusão de Séries:** Cada série na lista pode ser removida.
+-   **Validação de Formulário:** Validação básica para garantir que todos os campos sejam preenchidos antes do cadastro.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Demonstração
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Abaixo estão as telas da aplicação implementada:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Página Inicial**
+![Página Inicial](https://i.imgur.com/G5gE50Y.png)
 
-## Learn More
+**Página Sobre**
+![Página Sobre](https://i.imgur.com/vHq1hBw.png)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Página de Cadastro de Séries**
+![Formulário de Cadastro](https://i.imgur.com/X4J6wZ0.png)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Página de Listagem de Séries**
+![Lista de Séries](https://i.imgur.com/aC8Fw1Z.png)
 
-### Code Splitting
+## Decisões de Desenvolvimento
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+-   **Gerenciamento de Estado:** O estado principal da aplicação (a lista de séries) foi centralizado no componente `App.jsx` (padrão "lifting state up"). Isso simplifica o fluxo de dados, pois o `App` se torna a única fonte da verdade e distribui os dados e as funções de manipulação para os componentes filhos via `props`.
+-   **Navegação:** A navegação entre as "páginas" foi implementada de forma estática, utilizando o estado do `App.jsx` e renderização condicional, sem a necessidade de uma biblioteca de roteamento externa nesta fase.
+-   **Imutabilidade:** Todas as operações de manipulação do estado (adicionar, editar, excluir) foram feitas de forma imutável, criando novos arrays com os dados atualizados (`spread syntax`, `.map()`, `.filter()`) em vez de modificar o array original. Esta é uma prática fundamental do React para garantir a previsibilidade e o correto funcionamento das renderizações.
