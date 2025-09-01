@@ -68,3 +68,30 @@ Abaixo estão as telas da aplicação implementada:
 -   **Gerenciamento de Estado:** O estado principal da aplicação (a lista de séries) foi centralizado no componente `App.jsx` (padrão "lifting state up"). Isso simplifica o fluxo de dados, pois o `App` se torna a única fonte da verdade e distribui os dados e as funções de manipulação para os componentes filhos via `props`.
 -   **Navegação:** A navegação entre as "páginas" foi implementada de forma estática, utilizando o estado do `App.jsx` e renderização condicional, sem a necessidade de uma biblioteca de roteamento externa nesta fase.
 -   **Imutabilidade:** Todas as operações de manipulação do estado (adicionar, editar, excluir) foram feitas de forma imutável, criando novos arrays com os dados atualizados (`spread syntax`, `.map()`, `.filter()`) em vez de modificar o array original. Esta é uma prática fundamental do React para garantir a previsibilidade e o correto funcionamento das renderizações.
+-   
+# Series Journal - Fase 2
+
+Este projeto é a segunda fase do sistema frontend para a disciplina de Desenvolvimento de Sistemas Frontend. Nesta etapa, a aplicação estática foi transformada em uma Single Page Application (SPA) dinâmica, que consome uma API REST para realizar operações de CRUD.
+
+A interface foi modernizada com o uso da biblioteca Material-UI, com um estilo customizado para simular o efeito "glassmorphism".
+
+## Como Executar o Projeto
+
+Para executar o projeto completo, tanto a API de backend quanto a aplicação de frontend precisam estar rodando simultaneamente.
+
+### 1. Executando a API (Backend)
+
+**Pré-requisitos:** Node.js e npm instalados.
+
+```bash
+# Clone o repositório oficial da disciplina
+git clone [https://github.com/adsPucrsOnline/DesenvolvimentoFrontend.git](https://github.com/adsPucrsOnline/DesenvolvimentoFrontend.git)
+
+# Navegue até a pasta da API
+cd ./DesenvolvimentoFrontend/readingJournal-api/
+
+# Instale as dependências
+npm install
+
+# Inicie o servidor da API
+npm start

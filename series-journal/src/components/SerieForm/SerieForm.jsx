@@ -1,4 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import api from "../../services/api";
+import { TextField, Button, Box, Typography, Paper } from "@mui/material";
 import "./SerieForm.css";
 
 const initialState = {
@@ -11,118 +14,152 @@ const initialState = {
     assistidoEm: "",
 };
 
-function SerieForm({ onSubmit, serieInicial, onCancel }) {
+function SerieForm() {
     const [formData, setFormData] = useState(initialState);
+    const { id } = useParams(); // Hook para pegar o ID da URL [cite: 11977, 12386]
+    const navigate = useNavigate();
+    const isEditing = Boolean(id);
 
     useEffect(() => {
-        if (serieInicial) {
-            setFormData(serieInicial);
-        } else {
-            setFormData(initialState);
+        if (isEditing) {
+            const fetchSerie = async () => {
+                try {
+                    const response = await api.get(`/series/${id}`);
+                    // Formata as datas para o formato yyyy-MM-dd que o input[type=date] espera
+                    const formattedData = {
+                        ...response.data,
+                        lancamento: response.data.lancamento.split("T")[0],
+                        assistidoEm: response.data.assistidoEm.split("T")[0],
+                    };
+                    setFormData(formattedData);
+                } catch (error) {
+                    console.error("Falha ao buscar a série para edição", error);
+                }
+            };
+            fetchSerie();
         }
-    }, [serieInicial]);
+    }, [id, isEditing]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault(); // Evita o recarregamento da página [cite: 392-393]
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
         // Validação básica
-        for (const key in formData) {
-            if (formData[key] === "" && key !== "id") {
-                alert("Por favor, preencha todos os campos obrigatórios.");
+        for (const key in initialState) {
+            if (!formData[key]) {
+                alert(`O campo "${key}" é obrigatório.`);
                 return;
             }
         }
-        onSubmit(formData);
-        setFormData(initialState);
+
+        try {
+            if (isEditing) {
+                await api.put(`/series/${id}`, formData);
+                alert("Série atualizada com sucesso!");
+            } else {
+                await api.post("/series", formData);
+                alert("Série cadastrada com sucesso!");
+            }
+            navigate("/lista");
+        } catch (error) {
+            alert("Ocorreu um erro ao salvar a série.");
+            console.error(error);
+        }
     };
 
     return (
-        <div className="form-container">
-            <h2>{serieInicial ? "Editar Série" : "Cadastrar Séries"}</h2>
-            <form onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label>Título:</label>
-                    <input
-                        type="text"
-                        name="titulo"
-                        value={formData.titulo}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Número de Temporadas:</label>
-                    <input
-                        type="number"
-                        name="temporadas"
-                        value={formData.temporadas}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Data de Lançamento da Temporada:</label>
-                    <input
-                        type="date"
-                        name="lancamento"
-                        value={formData.lancamento}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Diretor:</label>
-                    <input
-                        type="text"
-                        name="diretor"
-                        value={formData.diretor}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Produtora:</label>
-                    <input
-                        type="text"
-                        name="produtora"
-                        value={formData.produtora}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Categoria:</label>
-                    <input
-                        type="text"
-                        name="categoria"
-                        value={formData.categoria}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-group">
-                    <label>Data em que assistiu:</label>
-                    <input
-                        type="date"
-                        name="assistidoEm"
-                        value={formData.assistidoEm}
-                        onChange={handleChange}
-                    />
-                </div>
-                <div className="form-actions">
-                    <button type="submit">
-                        {serieInicial ? "Atualizar Série" : "Cadastrar Série"}
-                    </button>
-                    {serieInicial && (
-                        <button
-                            type="button"
-                            onClick={onCancel}
-                            className="cancel-btn"
-                        >
-                            Cancelar
-                        </button>
-                    )}
-                </div>
-            </form>
-        </div>
+        <Paper component="form" onSubmit={handleSubmit} className="form-paper">
+            <Typography variant="h4" gutterBottom>
+                {isEditing ? "Editar Série" : "Cadastrar Série"}
+            </Typography>
+            <TextField
+                label="Título"
+                name="titulo"
+                value={formData.titulo}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Número de Temporadas"
+                name="temporadas"
+                type="number"
+                value={formData.temporadas}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Data de Lançamento"
+                name="lancamento"
+                type="date"
+                value={formData.lancamento}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+                InputLabelProps={{ shrink: true }}
+            />
+            <TextField
+                label="Diretor"
+                name="diretor"
+                value={formData.diretor}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Produtora"
+                name="produtora"
+                value={formData.produtora}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Categoria"
+                name="categoria"
+                value={formData.categoria}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+            />
+            <TextField
+                label="Data em que assistiu"
+                name="assistidoEm"
+                type="date"
+                value={formData.assistidoEm}
+                onChange={handleChange}
+                required
+                fullWidth
+                margin="normal"
+                InputLabelProps={{ shrink: true }}
+            />
+            <Box
+                sx={{
+                    mt: 2,
+                    display: "flex",
+                    justifyContent: "flex-end",
+                    gap: 1,
+                }}
+            >
+                <Button variant="outlined" onClick={() => navigate("/lista")}>
+                    Cancelar
+                </Button>
+                <Button type="submit" variant="contained">
+                    {isEditing ? "Salvar" : "Cadastrar"}
+                </Button>
+            </Box>
+        </Paper>
     );
 }
 

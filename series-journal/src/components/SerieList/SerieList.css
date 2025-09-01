@@ -1,32 +1,12 @@
-.list-container {
-    width: 90%;
-    max-width: 900px;
-    margin: 0 auto;
-    text-align: center;
+.serie-card {
+    background: rgba(255, 255, 255, 0.4);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.2s;
 }
 
-.serie-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #eee;
-    padding: 10px 5px;
-}
-
-.serie-actions button {
-    margin-left: 10px;
-    cursor: pointer;
-}
-
-.delete-btn {
-    background-color: #f44336;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-}
-
-.add-new-btn {
-    margin-top: 20px;
-    padding: 10px 15px;
-    cursor: pointer;
+.serie-card:hover {
+    transform: translateY(-5px);
 }
