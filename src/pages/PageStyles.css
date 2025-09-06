@@ -1,0 +1,11 @@
+.page-paper {
+    background: rgba(255, 255, 255, 0.6) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 15px !important;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 2rem !important;
+    text-align: center;
+    max-width: 800px;
+    margin: 2rem auto;
+}
