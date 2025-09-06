@@ -43,8 +43,13 @@ c) Registre a nova rota no app.js:
 1. Abra o arquivo app.js na raiz da API.
 2. Adicione as duas linhas destacadas abaixo para que o Express reconheça suas novas rotas:
 
-// var seriesRouter = require('./routes/series'); // <-- ADICIONE ESTA LINHA
-// app.use('/series', seriesRouter); // <-- ADICIONE ESTA LINHA
+    ```bash
+    var seriesRouter = require('./routes/series'); // <-- ADICIONE ESTA LINHA
+    ```
+
+    ```bash
+    app.use('/series', seriesRouter); // <-- ADICIONE ESTA LINHA
+    ```
 
 ### Iniciando a API
 
