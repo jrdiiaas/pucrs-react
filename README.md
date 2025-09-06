@@ -103,8 +103,8 @@ Os testes E2E simulam um fluxo completo do usuário. É necessário que a API e 
 
 No diretório do frontend, em um novo terminal
 
-    ```bash
-npx cypress open
+    ```
+    npx cypress open
     ```
 Na interface do Cypress, selecione "E2E Testing", escolha um navegador e clique no arquivo series.cy.js para rodar o teste.
 
@@ -145,15 +145,19 @@ O projeto foi estruturado utilizando uma arquitetura baseada em componentes para
 Abaixo estão as telas da aplicação implementada:
 
 **Página Inicial**
+
 ![Página Inicial](./src/assets/inicio.png)
 
 **Página Sobre**
+
 ![Página Sobre](./src/assets/sobre.png)
 
 **Página de Cadastro de Séries**
+
 ![Formulário de Cadastro](./src/assets/form.png)
 
 **Página de Listagem de Séries**
+
 ![Lista de Séries](./src/assets/lista.png)
 
 ## Decisões de Desenvolvimento
