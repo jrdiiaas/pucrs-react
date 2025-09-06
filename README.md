@@ -30,7 +30,9 @@ a) Crie o arquivo de dados series.json:
 1. Dentro da pasta data/, crie um novo arquivo chamado series.json.
 2. Coloque o seguinte conteúdo nele para iniciar com uma lista vazia:
 
-[]
+    ```bash
+    []
+    ```
 
 b) Crie o arquivo de rotas series.js:
 
@@ -41,18 +43,8 @@ c) Registre a nova rota no app.js:
 1. Abra o arquivo app.js na raiz da API.
 2. Adicione as duas linhas destacadas abaixo para que o Express reconheça suas novas rotas:
 
-// ...
-var indexRouter = require('./routes/index');
-var booksRouter = require('./routes/books');
-var seriesRouter = require('./routes/series'); // <-- ADICIONE ESTA LINHA
-
-var app = express();
-
-// ...
-app.use('/', indexRouter);
-app.use('/books', booksRouter);
-app.use('/series', seriesRouter); // <-- ADICIONE ESTA LINHA
-// ...
+// var seriesRouter = require('./routes/series'); // <-- ADICIONE ESTA LINHA
+// app.use('/series', seriesRouter); // <-- ADICIONE ESTA LINHA
 
 ### Iniciando a API
 
