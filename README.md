@@ -72,13 +72,17 @@ A API estará em execução em http://localhost:5000 (ou 5001, confirme a porta 
 Abra um novo terminal.
 Navegue até a pasta do seu projeto series-journal.
 Instale as dependências:
+
     ```bash
     npm install
     ```
+
 Inicie a aplicação:
+
     ```bash
     npm start
     ```
+    
 A aplicação será aberta no seu navegador em http://localhost:3000.
 
 ## Como Executar os Testes
